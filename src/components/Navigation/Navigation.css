@@ -1,10 +1,17 @@
 .NavigationMenu {
   position: fixed;
+  display: flex;
+  flex-direction: column;
   min-height: 90vh;
   height: 100%;
+  width: 250px;
+  top: calc(100px + 2px);
+  bottom: 0;
   left: 0;
-  transition: transform 250ms ease-in-out;
   background: linear-gradient(180deg, #212121 30%, #550707 100%);
+  transition: width 300ms;
+  visibility: visable;
+  border-right: 1px solid rgba(113, 113, 113, 0.5);
 }
 
 .NavigationList {
@@ -12,7 +19,20 @@
   padding: 0;
 }
 
-.NavObject {
+.NavObjectHeader {
+  padding: 20px;
+  width: auto;
+  border-bottom: 0.5px solid #717171;
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  color: rgb(237, 231, 231);
+  justify-content: center;
+  align-items: center;
+  cursor: default;
+}
+
+.NavObjectItems {
   padding: 20px;
   width: auto;
   border-bottom: 0.5px solid #717171;
@@ -25,15 +45,40 @@
   cursor: pointer;
 }
 
-.NavObject #NavComponentIcon {
-  display: grid;
+.NavComponentIcon {
+  width: 1.75em;
+  height: 1.75em;
+  margin-right: 20px;
+  cursor: pointer;
+  user-select: none;
+  justify-content: center;
+  align-items: center;
+  flex: 20%;
 }
 
-.NavObject #NavComponentTitle {
+.NavComponentTitle {
   white-space: nowrap;
-  display: grid;
   text-align: left;
-  padding-left: 20px;
   flex: 100%;
-  transition: transform 250ms ease-in-out;
+}
+
+.NavObjectItems:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Coollapsed Navbar CSS */
+.NavigationMenu.collapsed {
+  width: 64px;
+  transition: width 500ms;
+
+}
+
+.NavigationMenu.collapsed .NavComponentIcon {
+  margin-right: 0;
+}
+
+.NavigationMenu.collapsed .NavComponentTitle {
+  display: none;
+  transition: display 500ms;
+  animation-delay: display 2s;
 }

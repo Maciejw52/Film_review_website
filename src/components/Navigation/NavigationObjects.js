@@ -4,12 +4,13 @@ import CategoryIcon from "@material-ui/icons/Category";
 import ReviewsIcon from "@material-ui/icons/RateReview"
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import FaceSharp from '@material-ui/icons/FaceSharp';
-import Menu from "@material-ui/icons/Menu";
+import Menu from "@material-ui/icons/Menu"
+
 
 export const NavigationObjects = [
     {
         title: "Menu",
-        icon: <Menu/>,
+        icon: <Menu />,
     },
     {
         title: "Home",
@@ -23,23 +24,23 @@ export const NavigationObjects = [
     },
     {
         title: "Add a Review",
-        icon: <CategoryIcon/>,
+        icon: <ReviewsIcon/>,
         link: "/reviews/new"
     },
     {
-        title: "Genre",
+        title: "Genres",
         icon: <CategoryIcon/>,
         link: "/genres"
     },
     {
         title: "Add a Genre",
         icon: <CategoryIcon />,
-        link: "/genres"
+        link: "/genres/new"
     },
     {
         title: "Actors",
         icon: <FaceSharp />,
-        link: "/categories"
+        link: "/actors"
     },
     {
         title: "Account",
