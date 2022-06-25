@@ -1,4 +1,4 @@
-# Film_review_website
+# P1_Film_review_website
 
 This project is split across two git repositories.
 - [P1_Film_review_webiste](https://github.com/Maciejw52/Film_review_website) is the frontend/client side built with React js utilising axios and other libraries
