@@ -4,8 +4,13 @@ import CategoryIcon from "@material-ui/icons/Category";
 import ReviewsIcon from "@material-ui/icons/RateReview"
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import FaceSharp from '@material-ui/icons/FaceSharp';
+import Menu from "@material-ui/icons/Menu";
 
 export const NavigationObjects = [
+    {
+        title: "Menu",
+        icon: <Menu/>,
+    },
     {
         title: "Home",
         icon: <HomeIcon/>,

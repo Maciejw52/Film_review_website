@@ -1,0 +1,39 @@
+.NavigationMenu {
+  position: fixed;
+  min-height: 90vh;
+  height: 100%;
+  left: 0;
+  transition: transform 250ms ease-in-out;
+  background: linear-gradient(180deg, #212121 30%, #550707 100%);
+}
+
+.NavigationList {
+  margin: 0;
+  padding: 0;
+}
+
+.NavObject {
+  padding: 20px;
+  width: auto;
+  border-bottom: 0.5px solid #717171;
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  color: rgb(237, 231, 231);
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.NavObject #NavComponentIcon {
+  display: grid;
+}
+
+.NavObject #NavComponentTitle {
+  white-space: nowrap;
+  display: grid;
+  text-align: left;
+  padding-left: 20px;
+  flex: 100%;
+  transition: transform 250ms ease-in-out;
+}
