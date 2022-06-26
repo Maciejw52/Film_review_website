@@ -3,15 +3,17 @@ import { Button } from 'react-bootstrap'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { postGenre } from '../../utils/api';
+import UppercaseString from "../../utils/UppercaseString";
 
 function AddGenre() {
   
   
   const HandleSendGenre = (NewGenre) => {
     
-    console.log(NewGenre)
+    const sendGenre = UppercaseString(NewGenre.toLowerCase())
+
     const genreToSend = {
-      genre: NewGenre
+      genre: sendGenre
     };
 
     postGenre(genreToSend).then(() => {
@@ -20,27 +22,29 @@ function AddGenre() {
   }
 
   return (
-    <div>
-      <div>
+    <section>
+      <div className='flex-container' style={{flexDirection: "row", }}>
         <form
         onSubmit={(event) => {
           event.preventDefault();
           HandleSendGenre(event.target[0].value);
         }}
         >
-          <label>Add Genre</label>
-          <textarea
-            id='Genre'
-            rows="1"
-            cols="30"
-            type="text"
-            placeholder='Write your Genre here :)'
-            required
-          ></textarea>
-          <Button type="submit" class="btn btn-success">Submit</Button>
+          <div className='flex-container' style={{flexDirection: "column"}}>
+            <textarea
+              id='Genre'
+              rows="2"
+              type="text"
+              placeholder='Write your Genre here :)'
+              required
+            ></textarea>
+            <Button type="submit" class="btn btn-success">Submit</Button>
+          </div>
+
+          
         </form>
       </div>
-    </div>
+    </section>
   )
 }
 export default AddGenre

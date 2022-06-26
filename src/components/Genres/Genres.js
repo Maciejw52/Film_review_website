@@ -1,8 +1,11 @@
-import React from 'react'
-import { useEffect, useState } from 'react'
-import {
-  getGenresFromServer
-} from "../../utils/api"
+import React from 'react';
+import { useEffect, useState } from 'react';
+import { getGenresFromServer, deleteGenre } from "../../utils/api";
+import { Link } from 'react-router-dom';
+
+
+import Close from "@material-ui/icons/Close"
+import "./Genres.css";
 
 function AllGenres() {
 
@@ -15,16 +18,39 @@ function AllGenres() {
     })
   }, []);
 
+
+  // Will eventually show a Modal to confirm if user wants it deleted
+  const handleDeleteButtonClicked = (genreId) => {
+    const genreToDelete = { _id: genreId };
+    
+    deleteGenre(genreToDelete).then(() => {
+      window.location.reload(true);
+    })
+  }
+
   return (
     <>
-      <div>All Genres</div>
-      <div className='AllGenres'>
-        {genreView.map((genre) => {
-          return (
-            <div className='OneGenre'>{genre.genre}</div>
-          )
-        })}
-      </div> 
+      <div className='flex-container' style={{flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
+        <div className='AllGamesTitle'><p>All Genres</p></div>
+        <div className='AllGenres'>
+          {genreView.map((genre) => {
+            return (
+              <>
+                <div>
+                  <div className='GenreItem'>
+                    <div className='DeleteGenreButton' onClick={() => {handleDeleteButtonClicked(genre._id)}}><Close /></div>
+                    
+                    <Link style={{textDecoration: 'none', color: "white"}} to={`../reviews/${genre.genre}`}>
+                      <div className="GenreText">{genre.genre}</div>  
+                    </Link>
+                  </div>
+                </div>
+
+              </>
+            )
+          })}
+        </div> 
+      </div>
     </>
   )
 }

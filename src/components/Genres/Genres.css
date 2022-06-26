@@ -1,0 +1,44 @@
+.AllGamesTitle {
+  align-items: center;
+  font-size: 3vw;
+}
+
+.AllGenres {
+  height: 100%;
+  margin: auto;
+  display: grid;
+  text-align: center;
+  align-items: center;
+  color: #F5F5F5;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.GenreItem {
+  margin: 20px;
+  display: grid;
+  font-size: 2vw;
+  border-radius: 5px;
+  border: 1px solid #717171;
+}
+
+.GenreItem:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.GenreText {
+  padding: 5px
+}
+
+.GenreText:hover {
+  color: rgb(93, 149, 214);
+  cursor: pointer;
+}
+
+.DeleteGenreButton {
+  color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
+.DeleteGenreButton:hover {
+  color: rgb(173, 18, 18);
+}

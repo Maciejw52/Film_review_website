@@ -6,6 +6,11 @@ const myApi = axios.create({
   //baseURL:"https://review-website-server.herokuapp.com/api/"
 });
 
+/* 
+    
+    GENRE HTTP REQUESTS 
+
+*/
 
 export const getGenresFromServer = () => {
   return (
@@ -16,18 +21,8 @@ export const getGenresFromServer = () => {
   )
 }
 
-export const getReviewsFromServer = () => {
-  return (
-    myApi.get("reviews")
-      .then((dataFromServer) => {
-        return(dataFromServer.data)
-      })
-  )
-
-}
-
 export const postGenre = (NewGenre) => {
-  
+
   const { genre } = NewGenre;
 
   return (
@@ -42,6 +37,39 @@ export const postGenre = (NewGenre) => {
   )
 };
 
+export const deleteGenre = (genreId) => {
+  const { _id } = genreId;
+  
+  console.log(`Deleting genre with ID: ${_id}`)
+
+  return (
+    myApi
+      .delete(`genres/${_id}`)
+      .then((resposeFromServer) => {
+        console.log(resposeFromServer)
+      }).catch((error) => {
+        console.log(error);
+      })
+  )
+
+}
+
+/* 
+    
+    REVIEW HTTP REQUESTS 
+
+*/
+
+
+export const getReviewsFromServer = () => {
+  return (
+    myApi.get("reviews")
+      .then((dataFromServer) => {
+        return(dataFromServer.data)
+      })
+  )
+
+}
 
 export const postReview = (reviewObject) => {
   
