@@ -2,6 +2,9 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import { getReviewsFromServer } from '../../utils/api';
 import "./Reviews.css";
+import UppercaseString from "../../utils/UppercaseString";
+import {Link} from "react-router-dom";
+
 
 function AllReviews() {
   const [reviewView, setReviewView] = useState([]);
@@ -16,25 +19,53 @@ function AllReviews() {
   
   return (
     <>
-      <div>All Genres</div>
-      <div className='AllReviews'>
-        {reviewView.map((review) => {
-          return (
-            <>
-              <div>created_at {review.created_at}</div>
-              <div>film_title {review.film_title}</div>
-              <div>genre {review.genre}</div>
-              <div>header {review.header}</div>
-              <div>owner {review.owner}</div>
-              <div>rating {review.rating}</div>
-              <div>review_body {review.review_body}</div>
-              <div>review_img_name {review.review_img_name}</div>
-              <div>votes {review.votes}</div>
-              <div className='ReviewBottomBorder'></div>
-            </>
-          )
-        })}
-      </div> 
+      <div className='flex-container' style={{flexDirection: "column"}}>
+        <div>All Genres</div>
+        <div className='AllReviews'>
+          {reviewView.map((review) => {
+            return (
+              <section>
+              {/* Main review container */}
+              <div className='reviewContainer' key={review._id} style={{flexDirection: "row"}}>
+                {/* Main - Voting Item */}
+                
+                {/* Main - Text Item */}
+                <div className="flex-constainer" style={{flexDirection: "column", flex:"60%"}}>                
+                  {/* Child - Text Text Item */}
+                  <div id='reviewText' >
+                    <Link style={{textDecoration: 'none'}} to={`/reviews/${review._id}`}>
+                      <div className='reviewTitle'>{review.header}</div>
+                    </Link>
+
+                    <div className='flex-container' style={{ alignItems: "center"}}>
+                      <div className='reviewAuthor' style={{marginRight: "10px"}}>{UppercaseString(review.owner)}</div>
+                      <div className='reviewDateCreated'>{(review.created_at).substring(0, (review.created_at).indexOf('T'))}</div>
+                    </div>
+
+                    <div className="flex-container">
+                      <Link style={{textDecoration: 'none'}} to={`../reviews/genres/${review.genre}`}>
+                        <div className='reviewCategory' >{UppercaseString(review.genre)}</div>
+                      </Link>
+                      <div></div>
+                    </div>
+
+                    <div className='reviewReview' style={{marginTop:"10px", marginBottom:"10px"}}>{review.review_body}</div>
+
+                  </div>
+
+                  <div/>
+                </div>
+
+                {/* Main - Image Item */}
+                <div id='reviewImage' style={{flex:"25%", alignItems: "center"}}>
+                </div>
+              </div>
+              </section>
+            );
+          })}
+        </div>
+      </div>
+    
     </>
   )
 }
