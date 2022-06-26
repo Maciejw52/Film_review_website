@@ -14,7 +14,6 @@ export const getGenresFromServer = () => {
         return(dataFromServer.data)
       })
   )
-
 }
 
 export const getReviewsFromServer = () => {
@@ -27,6 +26,21 @@ export const getReviewsFromServer = () => {
 
 }
 
+export const postGenre = (NewGenre) => {
+  
+  const { genre } = NewGenre;
+
+  return (
+    myApi.post(`genres/new`, {
+      genre: genre
+    } )
+    .then(({ dataFromServer }) => {
+      console.log(dataFromServer)
+    }).catch((error) => {
+      console.log(error)
+    })
+  )
+};
 
 
 export const postReview = (reviewObject) => {

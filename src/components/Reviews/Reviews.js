@@ -20,7 +20,7 @@ function AllReviews() {
   return (
     <>
       <div className='flex-container' style={{flexDirection: "column"}}>
-        <div>All Genres</div>
+        <div className='AllReviewsTitle'>All Reviews</div>
         <div className='AllReviews'>
           {reviewView.map((review) => {
             return (
