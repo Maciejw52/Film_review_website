@@ -31,7 +31,7 @@ function AllGenres() {
   return (
     <>
       <div className='flex-container' style={{flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
-        <div className='AllGamesTitle'><p>All Genres</p></div>
+        <div className='AllGenresTitle'><p>All Genres</p></div>
         <div className='AllGenres'>
           {genreView.map((genre) => {
             return (

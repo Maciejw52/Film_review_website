@@ -51,7 +51,6 @@ export const deleteGenre = (genreId) => {
         console.log(error);
       })
   )
-
 }
 
 /* 
@@ -68,7 +67,6 @@ export const getReviewsFromServer = () => {
         return(dataFromServer.data)
       })
   )
-
 }
 
 export const postReview = (reviewObject) => {
