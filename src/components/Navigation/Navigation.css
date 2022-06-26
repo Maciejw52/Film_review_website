@@ -1,5 +1,5 @@
 .NavigationMenu {
-  position: fixed;
+  position: absolute;
   display: flex;
   flex-direction: column;
   min-height: 90vh;

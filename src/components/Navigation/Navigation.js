@@ -12,12 +12,10 @@ function NavigationSidebar() {
 
   const handleToggle = () => {
     if (navIsShown) {
-      console.log("toggle nav")
       setNavIsShown(false);
       localStorage.setItem("sidebar-collapsed", true);
       return;
     }
-    console.log("toggle")
     setNavIsShown(true);
     localStorage.removeItem("sidebar-collapsed");
   }
