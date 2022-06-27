@@ -6,9 +6,9 @@ export const UserContext = createContext({ name: '', auth: false });
 
 
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState({ name: 'Maciej', auth: false });
+  const [user, setUser] = useState({ name: '', auth: false });
 
-  const login = (name) => {
+  const userLogin = (name) => {
     setUser((user) => ({
       name: name,
       auth: true,
@@ -23,7 +23,7 @@ export const UserProvider = ({ children }) => {
   };
 
   return (
-    <UserContext.Provider value={{ user, login, userLogout }}>
+    <UserContext.Provider value={{ user, userLogin, userLogout }}>
       {children}
     </UserContext.Provider>
   );

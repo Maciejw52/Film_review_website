@@ -1,30 +1,50 @@
 import React from 'react'
 import { UserContext } from '../../UserContext';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Button } from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Account() {
-  const { user } = useContext(UserContext);
-  const { userLogout } = useContext(UserContext);
+  
+  const { user, userLogin, userLogout } = useContext(UserContext);
 
-  const handleUserLogout = () => {
-    //Will later show a model confimring logout
-    userLogout();
-  }
+  const [currentUser, setCurrentUser] = useState(user.user);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    let uname = document.forms.item(0)[0].value;
+    userLogin(uname)
+    setCurrentUser(uname)
+  };
+
 
   return (
-    <>
-      <form className='flex-constainer'>
-        <div>Welcome {user.name}</div>
-        <div className='LogButtons'>
+    <div>
+      <div>Welcome {currentUser}</div>
+      <br/>
+      <div className="form">
+        <form
+          onSubmit={handleSubmit}
+          className='flex-container'
+          style={{ flexDirection: "column" }}
+        >
+          <div className="input-container">
+            <label>Username </label>
+            <input type="text" name="username" id="username" required />
+          </div>
+          <br/>
+          <div className="input-container">
+            <label>Password </label>
+            <input type="password" name="password" required />
+          </div>
+          <br/>
           <Button type="submit" className="btn btn-success LoginButton">Login</Button>
-          <Button className="btn btn-danger LogoutButton" onClick={handleUserLogout}>Logout</Button>
-        </div>
-      </form>
+        </form>
 
-    </>
+        </div>
+      <Button className="btn btn-danger LogoutButton" onClick={() => {userLogout()}}>Logout</Button>
+    </div>
   )
 }
 
