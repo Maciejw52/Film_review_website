@@ -13,7 +13,6 @@ function AllGenres() {
 
   useEffect(() => {
     getGenresFromServer().then((genresObject) => {
-      console.log(genresObject);
       setGenreView(genresObject)
     })
   }, []);

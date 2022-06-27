@@ -4,7 +4,6 @@ import HomeIcon from '@mui/icons-material/Home';
 import CategoryIcon from '@mui/icons-material/Category';
 import ReviewsIcon from '@mui/icons-material/Reviews';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import GroupIcon from '@mui/icons-material/Group';
 import Menu from "@mui/icons-material/Menu"
 import AddCommentIcon from '@mui/icons-material/AddComment';
 
@@ -16,22 +15,22 @@ export const NavigationObjects = [
     },
     {
         title: "Home",
-        icon: <HomeIcon/>,
+        icon: <HomeIcon />,
         link: "/"
     },
     {
         title: "Film Reviews",
-        icon: <ReviewsIcon/>,
+        icon: <ReviewsIcon />,
         link: "/reviews"
     },
     {
         title: "Add a Review",
-        icon: <AddCommentIcon/>,
+        icon: <AddCommentIcon />,
         link: "/reviews/new"
     },
     {
         title: "Genres",
-        icon: <CategoryIcon/>,
+        icon: <CategoryIcon />,
         link: "/genres"
     },
     {
@@ -40,13 +39,8 @@ export const NavigationObjects = [
         link: "/genres/new"
     },
     {
-        title: "Actors",
-        icon: <GroupIcon />,
-        link: "/actors"
-    },
-    {
         title: "Account",
-        icon: <AccountCircleIcon/>,
+        icon: <AccountCircleIcon />,
         link: "/account"
     }
 ];

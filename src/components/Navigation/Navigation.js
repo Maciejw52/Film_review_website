@@ -28,21 +28,21 @@ function NavigationSidebar() {
           if (singleNavObject.title === "Menu") {
             return (
               <div key={key}>
-              <li key={singleNavObject.title} className={"NavObjectHeader"}>
-                <div className="NavComponentIcon" onClick={handleToggle}>{singleNavObject.icon}</div>
-                <span className="NavComponentTitle">{singleNavObject.title}</span>
-              </li>
-            </div>
+                <li key={singleNavObject.title} className={"NavObjectHeader"}>
+                  <div className="NavComponentIcon" onClick={handleToggle}>{singleNavObject.icon}</div>
+                  <span className="NavComponentTitle">{singleNavObject.title}</span>
+                </li>
+              </div>
             );
           }
-          return(
+          return (
             <div key={key}>
-              <Link style={{textDecoration: 'none'}} to={`${singleNavObject.link}`}>
-              <li 
-                key={singleNavObject.title}
-                className={"NavObjectItems"}>
-                <div className="NavComponentIcon">{singleNavObject.icon}</div>
-                <span className="NavComponentTitle">{singleNavObject.title}</span>
+              <Link style={{ textDecoration: 'none' }} to={`${singleNavObject.link}`}>
+                <li
+                  key={singleNavObject.title}
+                  className={"NavObjectItems"}>
+                  <div className="NavComponentIcon">{singleNavObject.icon}</div>
+                  <span className="NavComponentTitle">{singleNavObject.title}</span>
                 </li>
               </Link>
             </div>
