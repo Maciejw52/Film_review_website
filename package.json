@@ -1,7 +1,7 @@
 {
   "name": "frontend_react_film_review_website",
   "version": "1.0.0",
-  "private": false,
+  "private": true,
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
@@ -19,6 +19,9 @@
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
+  "overrides": {
+    "autoprefixer": "10.4.5"
+  }, 
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build"
