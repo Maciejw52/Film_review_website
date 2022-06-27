@@ -1,12 +1,9 @@
 import axios from "axios";
 
-if (process.env.NODE_ENV !== "production"){
-  require("dotenv").config();
-}
-
 // URL for backend
 const myApi = axios.create({
-  baseURL: process.env.SERVER_URL || "http://localhost:7000/api/"
+  //baseURL: "http://localhost:7000/api/"
+  baseURL:"https://review-website-server.herokuapp.com/api/"
 });
 
 /* 

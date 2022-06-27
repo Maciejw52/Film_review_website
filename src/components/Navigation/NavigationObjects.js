@@ -1,10 +1,12 @@
-import React from 'react'
-import HomeIcon from "@material-ui/icons/Home";
-import CategoryIcon from "@material-ui/icons/Category";
-import ReviewsIcon from "@material-ui/icons/RateReview"
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-import FaceSharp from '@material-ui/icons/FaceSharp';
-import Menu from "@material-ui/icons/Menu"
+import React from 'react';
+
+import HomeIcon from '@mui/icons-material/Home';
+import CategoryIcon from '@mui/icons-material/Category';
+import ReviewsIcon from '@mui/icons-material/Reviews';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import GroupIcon from '@mui/icons-material/Group';
+import Menu from "@mui/icons-material/Menu"
+import AddCommentIcon from '@mui/icons-material/AddComment';
 
 
 export const NavigationObjects = [
@@ -24,7 +26,7 @@ export const NavigationObjects = [
     },
     {
         title: "Add a Review",
-        icon: <ReviewsIcon/>,
+        icon: <AddCommentIcon/>,
         link: "/reviews/new"
     },
     {
@@ -39,7 +41,7 @@ export const NavigationObjects = [
     },
     {
         title: "Actors",
-        icon: <FaceSharp />,
+        icon: <GroupIcon />,
         link: "/actors"
     },
     {

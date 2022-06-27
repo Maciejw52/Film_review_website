@@ -4,7 +4,7 @@ import { getGenresFromServer, deleteGenre } from "../../utils/api";
 import { Link } from 'react-router-dom';
 
 
-import Close from "@material-ui/icons/Close"
+import Close from "@mui/icons-material/Close"
 import "./Genres.css";
 
 function AllGenres() {
@@ -35,8 +35,7 @@ function AllGenres() {
         <div className='AllGenres'>
           {genreView.map((genre) => {
             return (
-              <>
-                <div>
+                <div key={genre._id}>
                   <div className='GenreItem'>
                     <div className='DeleteGenreButton' onClick={() => {handleDeleteButtonClicked(genre._id)}}><Close /></div>
                     
@@ -45,8 +44,6 @@ function AllGenres() {
                     </Link>
                   </div>
                 </div>
-
-              </>
             )
           })}
         </div> 

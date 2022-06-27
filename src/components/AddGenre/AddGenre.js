@@ -44,7 +44,7 @@ function AddGenre() {
                   placeholder='Write your Genre here :)'
                   required
                 ></textarea>
-                <Button type="submit" class="btn btn-success">Submit</Button>
+                <Button type="submit" className="btn btn-success">Submit</Button>
               </div>            
             </form>
           </div>
