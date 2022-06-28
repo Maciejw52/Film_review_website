@@ -31,6 +31,7 @@ function AllGenres() {
     <>
       <div className='flex-container' style={{flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
         <div className='AllGenresTitle'><p>All Genres</p></div>
+        <p style={{color: "rgba()"}}>On this page you can delete genres and also clicking on the genre title displays all the reviews for that genre</p>
         <div className='AllGenres'>
           {genreView.map((genre) => {
             return (

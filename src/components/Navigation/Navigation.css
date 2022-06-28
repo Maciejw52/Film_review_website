@@ -7,10 +7,12 @@
   top: calc(100px + 2px);
   bottom: 0;
   left: 0;
-  background: linear-gradient(180deg, #212121 30%, #550707 100%);
+  background-color: rgba(0, 0, 0, 0.3);
   transition: width 300ms;
   visibility: visable;
   border-right: 1px solid rgba(113, 113, 113, 0.5);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
 }
 
 .NavigationList {

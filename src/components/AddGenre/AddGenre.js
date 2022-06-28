@@ -39,11 +39,14 @@ function AddGenre() {
               <div className='flex-container GenreInputAndButton'>
                 <textarea
                   id='Genre'
-                  rows="2"
+                  rows="1"
+                  cols="30"
                   type="text"
                   placeholder='Write your Genre here :)'
                   required
+                  style={{resize: "none"}}
                 ></textarea>
+                <br/>
                 <Button type="submit" className="btn btn-success">Submit</Button>
               </div>            
             </form>
