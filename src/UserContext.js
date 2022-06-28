@@ -6,7 +6,8 @@ export const UserContext = createContext({ name: '', auth: false });
 
 export const UserProvider = ({ children }) => {
 
-  const [user, setUser] = useState({ name: '', auth: false });
+  // Temporarily Anon since cookies arent implemented yet
+  const [user, setUser] = useState({ name: 'Anon', auth: false });
 
   const userLogin = (name) => {
     setUser((user) => ({

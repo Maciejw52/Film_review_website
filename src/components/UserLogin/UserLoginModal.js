@@ -1,13 +1,13 @@
 import React from 'react'
 import { UserContext } from '../../UserContext';
-import { useContext, useState, useEffect } from 'react';
+import { useContext, useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function UserLogin() {
   
-  const { user, userLogin, userLogout } = useContext(UserContext);
+  const { user, userLogin } = useContext(UserContext);
   const [show, setShow] = useState(user.name === "");
 
   const handleSubmit = (event) => {
@@ -24,6 +24,7 @@ function UserLogin() {
   };
 
   const handleClose = () => {
+    userLogin("Anon")
     setShow(false);
   };
 
@@ -31,7 +32,6 @@ function UserLogin() {
     <>
       <div style={{textAlign: "center"}}>
         <Modal show={show} onHide={handleClose}>
-
           <Modal.Header closeButton>
             <Modal.Title>Please Login</Modal.Title>
           </Modal.Header>
@@ -51,7 +51,7 @@ function UserLogin() {
             </Modal.Body>
             <Modal.Footer>
               <Button type="submit" className="btn btn-success LoginButton">Login</Button>
-              <Button className="btn btn-danger LoginButton" onClick={() => {userLogin("Anon")}}>Continue as Anon</Button>
+              <Button className="btn btn-danger LoginButton" onClick={handleClose}>Continue as Anon</Button>
             </Modal.Footer>
           </form>
 
