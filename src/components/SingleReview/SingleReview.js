@@ -1,32 +1,29 @@
-import React from 'react'
+import React from 'react';
+import '../Reviews/Reviews.css';
 import { useState, useEffect } from 'react';
-import { getReviewsFromServer } from '../../utils/api';
-import "./Reviews.css";
-import UppercaseString from "../../utils/UppercaseString";
-import {Link} from "react-router-dom";
+import { getReviewByIdFromServer } from '../../utils/api';
+import { Link ,useParams } from 'react-router-dom';
+import UppercaseString from '../../utils/UppercaseString';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-function AllReviews() {
-  const [reviewView, setReviewView] = useState([]);
+function SingleReviewPage() {
+  
+  const [review, setReview] = useState([]);
+  const { review_id } = useParams();
 
-  useEffect(() => {
-    getReviewsFromServer().then((genresObject) => {
-      console.log(genresObject);
-      setReviewView(genresObject)
+  useEffect(()=> {
+    getReviewByIdFromServer(review_id)
+    .then((reviewFromServer) => {
+      setReview(reviewFromServer);
     })
-  }, []);
-  
-  
-  return (
+  }, [review_id]); 
+
+  return (  
     <>
       <div className='flex-container' style={{flexDirection: "column"}}>
-        <div className='Full' style={{flexDirection: "column", alignItems: "center"}}>
-          <h2>All Reviews</h2>
-        </div>
-        <div className='AllReviews'>
-          {reviewView.map((review, key) => {
-            return (
-              <section key={key}>
+        <div className='OneReview'>
+              <section>
               {/* Main review container */}
               <div className='reviewContainer' key={review._id} style={{flexDirection: "row"}}>
                 {/* Main - Voting Item */}
@@ -56,7 +53,7 @@ function AllReviews() {
                       <div></div>
                     </div>
 
-                    <div className='reviewReview' style={{marginTop:"10px", marginBottom:"10px"}}>{review.review_body}</div>
+                    <div className='fullReview' style={{marginTop:"10px", marginBottom:"10px"}}>{review.review_body}</div>
 
                   </div>
 
@@ -68,13 +65,10 @@ function AllReviews() {
                 </div>
               </div>
               </section>
-            );
-          })}
         </div>
       </div>
-    
     </>
-  )
+    )
 }
 
-export default AllReviews
+export default SingleReviewPage

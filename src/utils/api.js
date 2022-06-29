@@ -2,8 +2,8 @@ import axios from "axios";
 
 // URL for backend
 const myApi = axios.create({
-  //baseURL: "http://localhost:7000/api/"
-  baseURL:"https://review-website-server.herokuapp.com/api/"
+  baseURL: "http://localhost:7000/api/"
+  //baseURL:"https://review-website-server.herokuapp.com/api/"
 });
 
 /* 
@@ -23,12 +23,8 @@ export const getGenresFromServer = () => {
 
 export const postGenre = (NewGenre) => {
 
-  const { genre } = NewGenre;
-
   return (
-    myApi.post(`genres/new`, {
-      genre: genre
-    } )
+    myApi.post(`genres/new`, NewGenre )
     .then(({ dataFromServer }) => {
       console.log(dataFromServer)
     }).catch((error) => {
@@ -70,14 +66,30 @@ export const getReviewsFromServer = () => {
 }
 
 export const postReview = (reviewObject) => {
-  
-  const { username, body } = reviewObject;
+
+  console.log(reviewObject)
 
   return (
-    myApi.post(`reviews/new`, { username, body })
-    .then(({ dataFromServer }) => {
-      return dataFromServer;
-    })
+    myApi.post("")
   )
 };
 
+export const deleteReview = () => {
+  
+
+    // myApi.post(`reviews/new`, reviewObject)
+    // .then(({ dataFromServer }) => {
+    //   return dataFromServer;
+    // })
+}
+
+export const getReviewByIdFromServer = (reviewId) => {
+  
+  return (
+    myApi.get(`/reviews/${reviewId}`)
+      .then((reviewIdData) => {
+      console.log(reviewIdData.data)
+      return reviewIdData.data;
+    })
+  )
+}
