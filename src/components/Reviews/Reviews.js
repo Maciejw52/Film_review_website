@@ -31,7 +31,7 @@ function AllReviews() {
                 {/* Main - Voting Item */}
                 
                 {/* Main - Text Item */}
-                <div className="flex-constainer" style={{flexDirection: "column", flex:"60%"}}>                
+                <div className="flex-constainer" style={{flexDirection: "column", flex:"60%", borderLeft: " 1px solid #707070"}}>                
                   {/* Child - Text Text Item */}
                   <div id='reviewText' >
 
@@ -49,6 +49,7 @@ function AllReviews() {
                     </div>
 
                     <div className="flex-container">
+                      <div className='reviewCategory'style={{marginRight: "15px"}} >{review.film_title}</div>
                       <Link style={{textDecoration: 'none'}} to={`../reviews/genres/${review.genre}`}>
                         <div className='reviewCategory' >{review.genre}</div>
                       </Link>
@@ -65,7 +66,11 @@ function AllReviews() {
                 {/* Main - Image Item */}
                 <div id='reviewImage' style={{flex:"20%", alignItems: "center"}}>
                 </div>
-              </div>
+                </div>
+                <div className='flex-container' style={{flexDirection: "column", alignItems: "center"}}>
+                  <div/><div className="reviewBreak" ></div><div/>
+                </div>
+                
               </section>
             );
           })}

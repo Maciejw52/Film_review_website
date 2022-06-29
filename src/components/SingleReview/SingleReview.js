@@ -28,7 +28,7 @@ function SingleReviewPage() {
                 {/* Main - Voting Item */}
                 
                 {/* Main - Text Item */}
-                <div className="flex-constainer" style={{flexDirection: "column", flex:"60%"}}>                
+                <div className="flex-container" style={{flexDirection: "column", flex:"60%"}}>                
                   {/* Child - Text Text Item */}
                   <div id='reviewText' >
 
@@ -46,6 +46,7 @@ function SingleReviewPage() {
                     </div>
 
                     <div className="flex-container">
+                      <div className='reviewCategory'  style={{marginRight: "15px"}} >{review.film_title}</div>
                       <Link style={{textDecoration: 'none'}} to={`../reviews/genres/${review.genre}`}>
                         <div className='reviewCategory' >{review.genre}</div>
                       </Link>

@@ -1,8 +1,7 @@
 .App {
   width: 100%;
-  min-height: 100vh;
-  height: fit-content;
-  min-width: 800px;
+  height: 100vh;
+  min-height: fit-content;
   background: linear-gradient(180deg, #212121 30%, rgb(85, 7, 7) 100%);
 }
 
@@ -16,13 +15,13 @@ body {
 
 .Header {
   display: flex;
-  height: 100px;
+  height: 80px;
   width: 100%;
   background-color: #212121;
   color: whitesmoke;
   border-bottom: 2px solid #717171;
   justify-content: center;
-  font-size: 75px;
+  font-size: clamp(45px, 2.65vw, 100px);
 }
 
 .Header:hover {
@@ -47,12 +46,10 @@ body {
 
 .templatePage {
   height: fit-content;
-  min-width: 50%;
-  width: fit-content;
-  max-width: 60%;
-  margin: auto;
+  margin-left: max(70px, 10%);
+  margin-right: max(10%, 5px);
   display: flex;
-  padding: 10px 10px 10px 10px;
+  padding: 5px;
   justify-content: center;
   margin-top: 2vh;
   bottom: 2vh;
@@ -60,4 +57,18 @@ body {
   border-radius: 5px;
   background-color: #1f1f1f;
   color: #F5F5F5;
+}
+
+@media only screen and (max-width: 750px) {
+  .templatePage {
+    margin-right: min(5px, 10%);
+    width: 565px
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .templatePage {
+    margin-right: 6px;
+    width: auto;
+  }
 }

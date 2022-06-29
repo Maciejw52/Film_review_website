@@ -1,5 +1,5 @@
 .AllReviews .ReviewBottomBorder {
-  width: 80%;
+  width: 100%;
   margin: auto;
   display: flex;
   text-align: center;
@@ -9,22 +9,21 @@
 }
 
 .reviewContainer {
-  height: 100%;
+  min-height: 150px;
   margin: auto;
   display: flex;
-  padding: 10px 10px 10px 10px;
-  margin-top: 2vh;
-  text-align: center;
-  align-items: center;
-  border: 1px solid #717171;
+  width: 100%;
+  padding: 5px;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  text-align: start;
   border-radius: 5px;
-  background-color: #1f1f1f;
+  background-color: rgb(31, 31, 31);
   color: #F5F5F5;
 }
 
 .reviewContainer:hover {
-  border: 1px solid #aaaaaa;
-  box-shadow: 0 0 10px -2px #888888;
+  box-shadow: 0 0 5px -1px #717171;
 }
 
 .reviewContainer #reviewText {
@@ -33,7 +32,6 @@
   place-content: center;
   text-align: left;
   flex: 65%;
-  border-left: 1px solid #707070;
   padding-left: 10px;
   padding-right: 10px;
 }
@@ -48,14 +46,14 @@
 
 .reviewTitle {
   color: #F5F5F5;
-  font-size: 2.2vw;
+  font-size: max(20px, 2vw);
   text-align: left;
   cursor: default;
 }
 
 .reviewTitleSingle {
   color: #F5F5F5;
-  font-size: 2.2vw;
+  font-size: max(20px, 2vw);
   text-align: left;
   cursor: default;
 }
@@ -66,7 +64,7 @@
 }
 
 .reviewAuthor {
-  font-size: 1.4vw;
+  font-size: max(14px, 1vw);
   color: #cccccc;
   justify-content: center;
 }
@@ -77,13 +75,13 @@
 }
 
 .reviewDateCreated {
-  font-size: 1.4vw;
+  font-size: max(12px, 1em);
   color: #818384;
   cursor: default;
 }
 
 .reviewCategory {
-  font-size: 1.25vw;
+  font-size: max(12px, 1em);
   color: #818384;
 }
 
@@ -93,7 +91,7 @@
 }
 
 .reviewReview {
-  font-size: 1.25vw;
+  font-size: max(10px, 1vw);
   display: -webkit-box;
   max-width: 100%;
   -webkit-line-clamp: 3;
@@ -104,9 +102,14 @@
 }
 
 .fullReview {
-  font-size: 1.25vw;
+  font-size: max(10px, 1vw);
   display: -webkit-box;
   max-width: 100%;
   color: #aaaaaa;
   cursor: default;
+}
+
+.reviewBreak {
+  border-bottom: 0.5px solid #585858;
+  width: 95%;
 }

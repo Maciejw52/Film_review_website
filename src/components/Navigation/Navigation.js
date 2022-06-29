@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 function NavigationSidebar() {
 
   const sidebarCollapsed = localStorage.getItem("sidebar-collapsed");
-  const [navIsShown, setNavIsShown] = useState(sidebarCollapsed ? false : true);
+  const [navIsShown, setNavIsShown] = useState(false);
 
   const handleToggle = () => {
     if (navIsShown) {
@@ -40,7 +40,9 @@ function NavigationSidebar() {
               <Link style={{ textDecoration: 'none' }} to={`${singleNavObject.link}`}>
                 <li
                   key={singleNavObject.title}
-                  className={"NavObjectItems"}>
+                  className={"NavObjectItems"}
+                  onClick={() => {setNavIsShown(false)}}
+                >
                   <div className="NavComponentIcon">{singleNavObject.icon}</div>
                   <span className="NavComponentTitle">{singleNavObject.title}</span>
                 </li>
