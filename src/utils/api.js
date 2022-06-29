@@ -2,8 +2,8 @@ import axios from "axios";
 
 // URL for backend
 const myApi = axios.create({
-  baseURL: "http://localhost:7000/api/"
-  //baseURL:"https://review-website-server.herokuapp.com/api/"
+  //baseURL: "http://localhost:7000/api/"
+  baseURL:"https://review-website-server.herokuapp.com/api/"
 });
 
 /* 
@@ -70,7 +70,12 @@ export const postReview = (reviewObject) => {
   console.log(reviewObject)
 
   return (
-    myApi.post("")
+    myApi.post("/reviews/new", reviewObject)
+    .then(({ dataFromServer }) => {
+      console.log(dataFromServer)
+    }).catch((error) => {
+      console.log(error)
+    })
   )
 };
 
