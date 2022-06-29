@@ -3,7 +3,6 @@ import '../Reviews/Reviews.css';
 import { useState, useEffect } from 'react';
 import { getReviewByIdFromServer } from '../../utils/api';
 import { Link ,useParams } from 'react-router-dom';
-import UppercaseString from '../../utils/UppercaseString';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 

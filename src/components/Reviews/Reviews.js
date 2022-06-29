@@ -2,7 +2,6 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import { getReviewsFromServer } from '../../utils/api';
 import "./Reviews.css";
-import UppercaseString from "../../utils/UppercaseString";
 import {Link} from "react-router-dom";
 
 
