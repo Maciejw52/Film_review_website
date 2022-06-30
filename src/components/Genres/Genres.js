@@ -13,29 +13,28 @@ function AllGenres() {
     getGenresFromServer().then((genresObject) => {
       setGenreView(genresObject)
     })
-  }, []);
+  }, [genreView]);
 
 
   // Will eventually show a Modal to confirm if user wants it deleted
-  const handleDeleteButtonClicked = (genreId) => {
-    const genreToDelete = { _id: genreId };
-    
-    deleteGenre(genreToDelete).then(() => {
-      window.location.reload(true);
-    })
+  const handleDeleteButtonClicked = (genreId, genreName) => {
+
+    deleteGenre({ _id: genreId }).then(() => {
+      setGenreView((prev) => { return prev.filter(item => item !== genreName)})
+    });
   }
 
   return (
     <>
       <div className='flex-container' style={{flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
         <div className='AllGenresTitle'><p>All Genres</p></div>
-        <p style={{color: "rgba()"}}>On this page you can delete genres and also clicking on the genre title displays all the reviews for that genre</p>
+        <p style={{color: "rgba()", textAlign: "center"}}>On this page you can delete genres and also clicking on the genre title displays all the reviews for that genre</p>
         <div className='AllGenres'>
           {genreView.map((genre) => {
             return (
                 <div key={genre._id}>
                   <div className='GenreItem'>
-                    <div className='DeleteGenreButton' onClick={() => {handleDeleteButtonClicked(genre._id)}}><Close /></div>
+                    <div className='DeleteGenreButton' onClick={() => {handleDeleteButtonClicked(genre._id, genre.genre)}}><Close /></div>
                     
                     <Link style={{textDecoration: 'none', color: "white"}} to={`../reviews/${genre.genre}`}>
                       <div className="GenreText">{genre.genre}</div>  

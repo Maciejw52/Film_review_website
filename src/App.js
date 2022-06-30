@@ -25,16 +25,19 @@ function App() {
         <div className="App">
           <Header />
           <NavigationSidebar />
-          <div className='templatePage'>
-            <Routes>
-              <Route exact path="/" element={<Homepage />} />
-              <Route exact path="/reviews" element={<Reviews />} />
-              <Route path="/reviews/:review_id" element={<SingleReview />} />
-              <Route exact path="/reviews/new" element={<AddReview />} />
-              <Route exact path="/genres" element={<Genres />} />
-              <Route exact path="/genres/new" element={<AddGenre />} />
-              <Route exact path="/account" element={<Account />} />
-            </Routes>
+
+          <div style={{height: "initial"}}>
+            <div className='templatePage'>
+              <Routes>
+                <Route exact path="/" element={<Homepage />} />
+                <Route exact path="/reviews" element={<Reviews />} />
+                <Route path="/reviews/:review_id" element={<SingleReview />} />
+                <Route exact path="/reviews/new" element={<AddReview />} />
+                <Route exact path="/genres" element={<Genres />} />
+                <Route exact path="/genres/new" element={<AddGenre />} />
+                <Route exact path="/account" element={<Account />} />
+              </Routes>
+            </div>
           </div>
         </div>
       </Router>

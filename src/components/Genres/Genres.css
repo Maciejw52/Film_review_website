@@ -1,6 +1,6 @@
 .AllGenresTitle {
   align-items: center;
-  font-size: 3vw;
+  font-size: max(22px, 3vw);
 }
 
 .AllGenres {
@@ -11,12 +11,26 @@
   align-items: center;
   color: #F5F5F5;
   grid-template-columns: 1fr 1fr 1fr;
+
+}
+
+@media only screen and (max-width: 810px) {
+  .AllGenres {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media only screen and (max-width: 510px) {
+  .AllGenres {
+    grid-template-columns: 1fr;
+    width: 100%
+  }
 }
 
 .GenreItem {
   margin: 20px;
   display: grid;
-  font-size: 2vw;
+  font-size: max(20px, 2vw);
   border-radius: 5px;
   border: 1px solid #717171;
 }
@@ -26,7 +40,8 @@
 }
 
 .GenreText {
-  padding: 5px
+  padding: 5px;
+  white-space: nowrap;
 }
 
 .GenreText:hover {
