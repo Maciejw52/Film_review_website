@@ -1,8 +1,10 @@
 import React from 'react'
 import { useEffect, useState, useContext } from 'react';
 import { getGenresFromServer, postReview } from '../../utils/api';
-import { Button } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import { UserContext } from '../../UserContext';
+import { Slider } from '@mui/material';
+
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -14,7 +16,6 @@ function AddReview() {
   useEffect(() => {
     getGenresFromServer().then((genresObject) => {
       setGenreView(genresObject)
-      console.log()
     })
   }, []);
 
@@ -43,56 +44,66 @@ function AddReview() {
       <div className='Full' style={{flexDirection: "column", alignItems: "center"}}>
         <h2>Add your film review</h2>
         <div>
-          <div  >
-            <form
+
+          <div>
+            <Form
               onSubmit={handleSubmitReview}
               className='flex-container'
               style={{flexDirection: "column"}}
             >
-          <div>
-            <div class="form-group">
-              <label for="film_title">Film Title</label>
-              <input type="text" class="form-control" id="film_title" name="film_title"  placeholder="Film" required/>
-            </div> 
-        </div>
-        <br></br>
-        <div className="form-group">
-          <label>Genre</label>
-            <select
-              name="genre"
-              required
-              id="genre"
-              class="custom-select"
-            >
-              <option value="">Open Me</option>
-              {genreView.map((genre, key) => { return (<option key={key}>{genre.genre}</option>) })}
-            </select>
-            <div className="invalid-feedback">Example invalid custom select feedback</div>
-        </div>
-          <br></br>
-           <div class="form-group">
-              <label for="header">Review Header</label>
-              <input type="text" class="form-control" id="header" name="header"  placeholder="Review Header" required/>
-            </div> 
-        <br></br>
-        <div>
-          <label>Film Picture</label>
-          <input type="file" name="picture" id="picture"></input>
-        </div>
-        <br></br>
-        <div>
-          <label>Review Body</label>
-          <textarea name="review_body" id="review_body" required></textarea>
-        </div>
-        <br></br>
-        <div>
-          <label>Rating</label>
-          <input type="number" name="votes" min="0" max="5" step="1" id="number" required></input>
-        </div>
-        <br/>
-        <Button type="submit" className="btn btn-success LoginButton">Submit</Button>
-           
-            </form>
+
+              <Form.Group className="mb-3" controlId="film_title">
+                <Form.Label>Film Title</Form.Label>
+                <Form.Control type="text" name="film_title"  placeholder="Film" required/>
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="genre">
+                <Form.Label>Genre</Form.Label>
+                <Form.Select aria-label="Default select example" name="genre" required>
+                  <option></option>
+                  {genreView.map((genre, key) => { return (<option key={key}>{genre.genre}</option>) })}
+                </Form.Select>
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="header">
+                <Form.Label>Header</Form.Label>
+                <Form.Control type="text" name="header"  placeholder="Summary" required/>
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="picture">
+                <Form.Label>Upload film poster</Form.Label>
+                <Form.Control type="file" accept="image/png, image/gif, image/jpeg"/>
+              </Form.Group>
+ 
+              <Form.Group className="mb-3" controlId="review_body">
+                <Form.Label>Review</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="review_body"
+                  placeholder="Write Your Review Here :)"
+                  required
+                  as="textarea"
+                  rows={3}
+                />
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="rating">
+                <Form.Label>Rating</Form.Label>
+                <Slider
+                aria-label="Temperature"
+                defaultValue={0}
+                valueLabelDisplay="auto"
+                step={1}
+                marks
+                min={0}
+                max={10}
+                id="number"
+                required
+                />
+              </Form.Group>
+
+              <Button type="submit" className="btn btn-success LoginButton">Submit</Button>
+            </Form>
           </div>
         </div> 
       </div>
