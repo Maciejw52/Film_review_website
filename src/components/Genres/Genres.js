@@ -2,8 +2,6 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { getGenresFromServer, deleteGenre } from "../../utils/api";
 import { Link } from 'react-router-dom';
-
-
 import Close from "@mui/icons-material/Close"
 import "./Genres.css";
 

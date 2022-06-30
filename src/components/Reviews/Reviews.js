@@ -6,12 +6,13 @@ import {Link} from "react-router-dom";
 
 
 function AllReviews() {
-  const [reviewView, setReviewView] = useState([]);
+
+  const [reviewViewAll, setReviewViewAll] = useState([]);
 
   useEffect(() => {
     getReviewsFromServer().then((genresObject) => {
       console.log(genresObject);
-      setReviewView(genresObject)
+      setReviewViewAll(genresObject)
     })
   }, []);
   
@@ -23,7 +24,8 @@ function AllReviews() {
           <h2>All Reviews</h2>
         </div>
         <div className='AllReviews'>
-          {reviewView.map((review, key) => {
+          {reviewViewAll.map((review, key) => {
+            
             return (
               <section key={key}>
               {/* Main review container */}
@@ -45,7 +47,7 @@ function AllReviews() {
 
                     <div className='flex-container' style={{ alignItems: "center"}}>
                       <div className='reviewAuthor' style={{marginRight: "10px"}}>{review.owner}</div>
-                      <div className='reviewDateCreated'>{review.created_at}</div>
+                        <div className='reviewDateCreated'>{review.created_at}</div>
                     </div>
 
                     <div className="flex-container">

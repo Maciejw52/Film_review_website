@@ -4,6 +4,8 @@ import { getGenresFromServer, postReview } from '../../utils/api';
 import { Button } from 'react-bootstrap';
 import { UserContext } from '../../UserContext';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 function AddReview() {
 
   const [genreView, setGenreView] = useState([]);
@@ -47,27 +49,31 @@ function AddReview() {
               className='flex-container'
               style={{flexDirection: "column"}}
             >
-            <div>
-          <label>Film Title</label>
-          <input type="text" name="film_title" id="film_title" required></input>
+          <div>
+            <div class="form-group">
+              <label for="film_title">Film Title</label>
+              <input type="text" class="form-control" id="film_title" name="film_title"  placeholder="Film" required/>
+            </div> 
         </div>
         <br></br>
-        <div>
+        <div className="form-group">
           <label>Genre</label>
-                <select
-                  name="genre"
-                  required
-                  id="genre"
-                >
-                  <option></option>
-                  {genreView.map((genre, key) => { return (<option key={key}>{genre.genre}</option>) })}
-          </select>
+            <select
+              name="genre"
+              required
+              id="genre"
+              class="custom-select"
+            >
+              <option value="">Open Me</option>
+              {genreView.map((genre, key) => { return (<option key={key}>{genre.genre}</option>) })}
+            </select>
+            <div className="invalid-feedback">Example invalid custom select feedback</div>
         </div>
-        <br></br>
-        <div>
-          <label>Review Header</label>
-          <input type="text" name="header" id="header" required></input>
-        </div>
+          <br></br>
+           <div class="form-group">
+              <label for="header">Review Header</label>
+              <input type="text" class="form-control" id="header" name="header"  placeholder="Review Header" required/>
+            </div> 
         <br></br>
         <div>
           <label>Film Picture</label>

@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 
 function NavigationSidebar() {
 
-  const sidebarCollapsed = localStorage.getItem("sidebar-collapsed");
   const [navIsShown, setNavIsShown] = useState(false);
 
   const handleToggle = () => {

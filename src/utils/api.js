@@ -1,4 +1,5 @@
 import axios from "axios";
+import ConvertDate from "./ConvertDate";
 
 // URL for backend
 const myApi = axios.create({
@@ -60,7 +61,13 @@ export const getReviewsFromServer = () => {
   return (
     myApi.get("reviews")
       .then((dataFromServer) => {
-        return(dataFromServer.data)
+
+        /* Date Handler */
+        dataFromServer.data.forEach((review) => {
+          review.created_at = ConvertDate(review.created_at)
+        })
+
+        return dataFromServer.data
       })
   )
 }
@@ -93,6 +100,9 @@ export const getReviewByIdFromServer = (reviewId) => {
   return (
     myApi.get(`/reviews/${reviewId}`)
       .then((reviewIdData) => {
+
+        reviewIdData.data.created_at = ConvertDate(reviewIdData.data.created_at);
+
       console.log(reviewIdData.data)
       return reviewIdData.data;
     })

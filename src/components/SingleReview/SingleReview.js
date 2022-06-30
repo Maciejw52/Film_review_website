@@ -13,7 +13,8 @@ function SingleReviewPage() {
 
   useEffect(()=> {
     getReviewByIdFromServer(review_id)
-    .then((reviewFromServer) => {
+      .then((reviewFromServer) => {
+      /* Review Handler */
       setReview(reviewFromServer);
     })
   }, [review_id]); 
