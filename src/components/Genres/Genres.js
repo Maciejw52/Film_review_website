@@ -7,22 +7,29 @@ import "./Genres.css";
 
 function AllGenres() {
 
-  const [genreView, setGenreView] = useState([]);
+  const [viewAllGenres, setViewAllGenres] = useState([]);
+
+  const handleDeleteButtonClicked = (genreId) => {
+    
+    deleteGenre({ _id: genreId }).then(() => {
+      setViewAllGenres((prev) => {
+        const newObj = prev.filter(item => item._id !== genreId)
+        console.log(`Updating View To`, newObj);
+        return (newObj)
+      });
+    }).catch(error => console.log(error));
+  }
 
   useEffect(() => {
     getGenresFromServer().then((genresObject) => {
-      setGenreView(genresObject)
+      console.log(`Got From Server`, genresObject);
+      setViewAllGenres(genresObject);
     })
-  }, [genreView]);
+  }, []);
 
 
   // Will eventually show a Modal to confirm if user wants it deleted
-  const handleDeleteButtonClicked = (genreId, genreName) => {
 
-    deleteGenre({ _id: genreId }).then(() => {
-      setGenreView((prev) => { return prev.filter(item => item !== genreName)})
-    });
-  }
 
   return (
     <>
@@ -30,11 +37,11 @@ function AllGenres() {
         <div className='AllGenresTitle'><p>All Genres</p></div>
         <p style={{color: "rgba()", textAlign: "center"}}>On this page you can delete genres and also clicking on the genre title displays all the reviews for that genre</p>
         <div className='AllGenres'>
-          {genreView.map((genre) => {
+          {viewAllGenres.map((genre) => {
             return (
                 <div key={genre._id}>
                   <div className='GenreItem'>
-                    <div className='DeleteGenreButton' onClick={() => {handleDeleteButtonClicked(genre._id, genre.genre)}}><Close /></div>
+                    <div className='DeleteGenreButton' onClick={() => {handleDeleteButtonClicked(genre._id)}}><Close /></div>
                     
                     <Link style={{textDecoration: 'none', color: "white"}} to={`../reviews/${genre.genre}`}>
                       <div className="GenreText">{genre.genre}</div>  

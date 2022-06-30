@@ -49,7 +49,8 @@ function AddReview() {
             <Form
               onSubmit={handleSubmitReview}
               className='flex-container'
-              style={{flexDirection: "column"}}
+              style={{ flexDirection: "column" }}
+              encType="multipart/form-data"
             >
 
               <Form.Group className="mb-3" controlId="film_title">
@@ -72,7 +73,7 @@ function AddReview() {
 
               <Form.Group className="mb-3" controlId="picture">
                 <Form.Label>Upload film poster</Form.Label>
-                <Form.Control type="file" accept="image/png, image/gif, image/jpeg"/>
+                <Form.Control type="file" accept="image/png, image/gif, image/jpeg" disabled/>
               </Form.Group>
  
               <Form.Group className="mb-3" controlId="review_body">
@@ -83,7 +84,7 @@ function AddReview() {
                   placeholder="Write Your Review Here :)"
                   required
                   as="textarea"
-                  rows={3}
+                  rows={5}
                 />
               </Form.Group>
 

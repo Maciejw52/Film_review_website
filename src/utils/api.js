@@ -3,8 +3,8 @@ import ConvertDate from "./ConvertDate";
 
 // URL for backend
 const myApi = axios.create({
-  //baseURL: "http://localhost:7000/api/"
-  baseURL:"https://review-website-server.herokuapp.com/api/"
+  baseURL: "http://localhost:7000/api/"
+  //baseURL:"https://review-website-server.herokuapp.com/api/"
 });
 
 /* 
@@ -26,8 +26,8 @@ export const postGenre = (NewGenre) => {
 
   return (
     myApi.post(`genres/new`, NewGenre )
-    .then(({ dataFromServer }) => {
-      console.log(dataFromServer)
+    .then(( dataFromServer) => {
+      console.log(dataFromServer.data)
     }).catch((error) => {
       console.log(error)
     })
@@ -74,25 +74,30 @@ export const getReviewsFromServer = () => {
 
 export const postReview = (reviewObject) => {
 
-  console.log(reviewObject)
-
   return (
     myApi.post("/reviews/new", reviewObject)
-    .then(({ dataFromServer }) => {
-      console.log(dataFromServer)
+    .then(( dataFromServer ) => {
+      console.log(dataFromServer.data)
     }).catch((error) => {
       console.log(error)
     })
   )
 };
 
-export const deleteReview = () => {
+export const deleteReview = (reviewId) => {
+  const { _id } = reviewId;
   
+  console.log(`Deleting review with ID: ${_id}`)
 
-    // myApi.post(`reviews/new`, reviewObject)
-    // .then(({ dataFromServer }) => {
-    //   return dataFromServer;
-    // })
+  return (
+    myApi
+      .delete(`reviews/${_id}`)
+      .then((resposeFromServer) => {
+        console.log(resposeFromServer)
+      }).catch((error) => {
+        console.log(error);
+      })
+  )
 }
 
 export const getReviewByIdFromServer = (reviewId) => {

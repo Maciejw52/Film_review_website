@@ -1,30 +1,40 @@
-import React from 'react'
+import React from 'react';
 import { useState, useEffect } from 'react';
-import { getReviewsFromServer } from '../../utils/api';
+import { getReviewsFromServer, deleteReview } from '../../utils/api';
 import "./Reviews.css";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import Close from "@mui/icons-material/Close";
 
 
 function AllReviews() {
 
-  const [reviewViewAll, setReviewViewAll] = useState([]);
+  const [viewAllReviews, setViewAllReviews] = useState([]);
+
+  const handleDeleteButtonClicked = (reviewId) => {   
+    deleteReview({ _id: reviewId }).then(() => {
+      setViewAllReviews((prev) => {
+        const newObj = prev.filter(item => item._id !== reviewId);
+        console.log(`Updating View To`, newObj);
+        return (newObj);
+      })
+    }).catch(error => console.log(error));
+  }
 
   useEffect(() => {
-    getReviewsFromServer().then((genresObject) => {
-      console.log(genresObject);
-      setReviewViewAll(genresObject)
+    getReviewsFromServer().then((reviewsObject) => {
+      console.log(`Got From Server`, reviewsObject);
+      setViewAllReviews(reviewsObject)
     })
   }, []);
   
-  
   return (
-    <>
+    <section>
       <div className='flex-container' style={{flexDirection: "column"}}>
         <div className='Full' style={{flexDirection: "column", alignItems: "center"}}>
           <h2>All Reviews</h2>
         </div>
         <div className='AllReviews'>
-          {reviewViewAll.map((review, key) => {
+          {viewAllReviews.map((review, key) => {
             
             return (
               <section key={key}>
@@ -67,8 +77,9 @@ function AllReviews() {
 
                 {/* Main - Image Item */}
                 <div id='reviewImage' style={{flex:"20%", alignItems: "center"}}>
-                </div>
-                </div>
+                  </div>
+                    <div className='DeleteGenreButton' onClick={() => {handleDeleteButtonClicked(review._id)}}><Close /></div>
+                  </div>
                 <div className='flex-container' style={{flexDirection: "column", alignItems: "center"}}>
                   <div/><div className="reviewBreak" ></div><div/>
                 </div>
@@ -79,7 +90,7 @@ function AllReviews() {
         </div>
       </div>
     
-    </>
+    </section>
   )
 }
 
