@@ -30,7 +30,7 @@ function AllReviews() {
   return (
     <section>
       <div className='flex-container' style={{flexDirection: "column"}}>
-        <div className='Full' style={{flexDirection: "column", alignItems: "center"}}>
+        <div className='Full' style={{ flexDirection: "column", textAlign: "center"}}>
           <h2>All Reviews</h2>
         </div>
         <div className='AllReviews'>

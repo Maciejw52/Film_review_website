@@ -1,5 +1,5 @@
 import React from 'react'
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import { UserContext } from '../../UserContext';
 import UserLoginModal from '../UserLogin/UserLoginModal';
 import "./Homepage.css"
@@ -8,10 +8,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Homepage() {
   const { user } = useContext(UserContext);
-
-  useEffect(() => {
-
-  })
 
   return (
     <>
@@ -22,8 +18,6 @@ function Homepage() {
             <p>This website is powered by React connected to a Node/Express backend server with a MongoDb database storing Genres, Reviews and Users</p>
           </div>
       </section>
-
-      <div>{user.name === "" ? <UserLoginModal /> : null}</div>
     </>
   )
 }

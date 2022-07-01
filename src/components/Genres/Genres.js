@@ -30,7 +30,9 @@ function AllGenres() {
   return (
     <>
       <div className='flex-container' style={{flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
-        <div className='AllGenresTitle'><p>All Genres</p></div>
+        <div className='Full' style={{ flexDirection: "column", textAlign: "center"}}>
+          <h2>All Genres</h2>
+        </div>
         <p style={{textAlign: "center"}}>On this page you can delete genres and also clicking on the genre title displays all the reviews for that genre</p>
         <div className='AllGenres'>
           {viewAllGenres.map((genre) => {

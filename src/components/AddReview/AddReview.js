@@ -5,7 +5,6 @@ import { Button, Form } from 'react-bootstrap';
 import { UserContext } from '../../UserContext';
 import { Slider } from '@mui/material';
 
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function AddReview() {
@@ -41,16 +40,19 @@ function AddReview() {
 
   return (
     <section>
-      <div className='Full' style={{flexDirection: "column", alignItems: "center"}}>
-        <h2>Add your film review</h2>
+      <div className='flex-container' style={{justifyContent: "center"}}>
+        <div className='flex-container' style={{ flexDirection: "column", width:"70%"}}>
+        <div style={{ flexDirection: "column", textAlign: "center"}}>
+          <h2>Add your film review</h2>
+        </div>
         <div>
-
           <div>
             <Form
               onSubmit={handleSubmitReview}
               className='flex-container'
               style={{ flexDirection: "column" }}
               encType="multipart/form-data"
+
             >
 
               <Form.Group className="mb-3" controlId="film_title">
@@ -103,15 +105,15 @@ function AddReview() {
                 />
               </Form.Group>
 
-              <div style={{display: "flex", justifyContent: "space-around"}}>
-                <Button type="submit" className="btn btn-success btn-block">Submit</Button>
+              <div style={{ display: "flex", justifyContent: "space-around" }}>
                 <Button type="reset" className="btn btn-primary btn-block" style={{width: "75.55px"}}>Clear</Button>
+                <Button type="submit" className="btn btn-success btn-block">Submit</Button>
               </div>
             </Form>
           </div>
         </div> 
       </div>
-
+      </div>
     </section>
 
 

@@ -46,10 +46,9 @@ body {
   height: 100;
   margin-left: max(70px, 10%);
   margin-right: max(10%, 5px);
-  display: flex;
   padding: 5px;
   margin-top: 2vh;
-  margin-bottom: initial;
+  margin-bottom: 2vh;
   bottom: 2vh;
   border: 1px solid #717171;
   border-radius: 5px;

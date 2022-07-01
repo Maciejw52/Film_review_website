@@ -5,10 +5,10 @@ import { Button, Modal } from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function UserLogin() {
+function UserLogin({show, setShow}) {
   
   const { user, userLogin } = useContext(UserContext);
-  const [show, setShow] = useState(user.name === "");
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
