@@ -3,8 +3,8 @@ import ConvertDate from "./ConvertDate";
 
 // URL for backend
 const myApi = axios.create({
-  baseURL: "http://localhost:7000/api/"
-  //baseURL:"https://review-website-server.herokuapp.com/api/"
+  //baseURL: "http://localhost:7000/api/"
+  baseURL:"https://review-website-server.herokuapp.com/api/"
 });
 
 /* 
