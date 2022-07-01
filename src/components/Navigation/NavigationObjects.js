@@ -42,5 +42,5 @@ export const NavigationObjects = [
         title: "Account",
         icon: <AccountCircleIcon />,
         link: "/account"
-    }
+    }   
 ];

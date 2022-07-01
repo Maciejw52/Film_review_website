@@ -48,7 +48,6 @@ body {
   margin-right: max(10%, 5px);
   display: flex;
   padding: 5px;
-  justify-content: center;
   margin-top: 2vh;
   margin-bottom: initial;
   bottom: 2vh;

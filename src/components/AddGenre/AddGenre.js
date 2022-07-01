@@ -15,29 +15,28 @@ function AddGenre() {
   }
 
   return (
-    <section>
-      <div className='Full' style={{flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
-        <div className='AddGenreTitle'>Add Genre</div>
-        <div className='AddGenreField'>
-          <div className='flex-container' style={{ flexDirection: "row" }}>
-            
-            <Form
-              onSubmit={(event) => {
-              event.preventDefault();
-                HandleSendGenre(event.target[0].value);
-                event.target[0].value = "";
-            }}>
-              <Form.Group className="mb-3" controlId="Genre">
-                <Form.Control type="text" placeholder="Enter Genre To Add" required />
-              </Form.Group>
-              <Button type="submit" className="btn btn-success">Submit</Button>
-            </Form>
-  
+    <>
+      <div className='flex-container' style={{ flexDirection: "column", textAlign: "center"}}>
+        <Form
+          style={{display: "flex", flexDirection: "column"}}
+          onSubmit={(event) => {
+          event.preventDefault();
+            HandleSendGenre(event.target[0].value);
+            event.target[0].value = "";
+          }}
+        >
+        <Form.Group className="mb-3" controlId="Genre">
+          <Form.Label><h2>Add Genre</h2></Form.Label>
+            <Form.Control type="text" placeholder="Enter Genre Here" required />
+          </Form.Group>
+          <div style={{display: "flex", justifyContent: "space-around"}}>
+            <Button type="submit" className="btn btn-success btn-block">Submit</Button>
+            <Button type="reset" className="btn btn-primary btn-block" style={{width: "75.55px"}}>Clear</Button>
           </div>
-        </div> 
-      </div>
+        </Form>
+    </div>
+    </>
 
-    </section>
   )
 }
 export default AddGenre

@@ -103,7 +103,10 @@ function AddReview() {
                 />
               </Form.Group>
 
-              <Button type="submit" className="btn btn-success LoginButton">Submit</Button>
+              <div style={{display: "flex", justifyContent: "space-around"}}>
+                <Button type="submit" className="btn btn-success btn-block">Submit</Button>
+                <Button type="reset" className="btn btn-primary btn-block" style={{width: "75.55px"}}>Clear</Button>
+              </div>
             </Form>
           </div>
         </div> 

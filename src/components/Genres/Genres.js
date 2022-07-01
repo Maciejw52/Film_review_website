@@ -27,15 +27,11 @@ function AllGenres() {
     })
   }, []);
 
-
-  // Will eventually show a Modal to confirm if user wants it deleted
-
-
   return (
     <>
       <div className='flex-container' style={{flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
         <div className='AllGenresTitle'><p>All Genres</p></div>
-        <p style={{color: "rgba()", textAlign: "center"}}>On this page you can delete genres and also clicking on the genre title displays all the reviews for that genre</p>
+        <p style={{textAlign: "center"}}>On this page you can delete genres and also clicking on the genre title displays all the reviews for that genre</p>
         <div className='AllGenres'>
           {viewAllGenres.map((genre) => {
             return (
