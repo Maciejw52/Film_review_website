@@ -1,19 +1,27 @@
 import React from 'react'
 import { UserContext } from '../../UserContext';
-import { useContext, useRef } from 'react';
+import { useContext, useRef, useState } from 'react';
 import { Button, Modal, Form } from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { postNewUser } from '../../utils/api';
 import bcrypt from 'bcryptjs'
+import ErrorAlerts from "../Alerts/ErrorAlerts";
 
 function UserLogin({showCreateNewUser, setShowCreateNewUser}) {
   
   const { userLogin } = useContext(UserContext);
+
+  // Inputs
   const usernameInputRef = useRef();
   const passwordInputRef1 = useRef();
   const passwordInputRef2 = useRef();
   const emailInputRef = useRef();
+
+
+  const [showAlert, setShowAlert] = useState(false);
+  const [errorCode, setErrorCode] = useState("");
+
 
   const handleLoginForm = (event) => {
     event.preventDefault();
@@ -22,18 +30,24 @@ function UserLogin({showCreateNewUser, setShowCreateNewUser}) {
     const hashedPass = bcrypt.hashSync(passwordInputRef1.current.value);
     const email = emailInputRef.current.value;
 
-    try {
-      postNewUser({
-        username: username,
-        password: hashedPass,
-        email: email
-      })
-      const loginForm = document.querySelectorAll('#username, #password, #email');
-      loginForm.forEach(input => {
-        input.value = '';});
-    } catch (error) {
+    postNewUser({
+      username: username,
+      password: hashedPass,
+      email: email
+    }).then((response) => {
+
+      if (response.status === 200) {
+        setShowCreateNewUser(false);
+        userLogin(username);
+        console.log(`user ${username} has been created.`);
+      } else {
+        setErrorCode(response.status);
+        setShowAlert(true);
+      }
+
+    }).catch((error) => {
       console.log(error);
-    }
+    })
   };
 
   const handleClose = () => {
@@ -52,26 +66,24 @@ function UserLogin({showCreateNewUser, setShowCreateNewUser}) {
             <Modal.Body>
               <div className="form">
                 <div className="input-container">
-                  <Form.Label>Username </Form.Label>
+                  <Form.Label>Username: </Form.Label>
                   <Form.Control ref={usernameInputRef} type="text" name="username" id="username"required />
                 </div>
-                <br />
                 <div className="input-container">
-                  <Form.Label>Email </Form.Label>
+                  <Form.Label>Email: </Form.Label>
                   <Form.Control ref={emailInputRef} type="email" name="email" id="email" required />
                 </div>
-                <br />
                 <div className="input-container">
-                  <Form.Label>Password </Form.Label>
+                  <Form.Label>Password: </Form.Label>
                   <Form.Control ref={passwordInputRef1} type="password" name="password" id="password" required />
                 </div>
-                <br />
                 <div className="input-container">
-                  <Form.Label>Re-Type Password </Form.Label>
+                  <Form.Label>Re-Type Password: </Form.Label>
                   <Form.Control ref={passwordInputRef2} type="password" name="password" id="password" required />
                 </div>
               </div>
             </Modal.Body>
+            {showAlert ? <ErrorAlerts errorCode={errorCode} /> : null }
             <Modal.Footer>
               <Button type="submit" className="btn btn-primary LoginButton">Create Account</Button>
               <Button className="btn btn-danger LoginButton" onClick={handleClose}>Continue as Anon</Button>

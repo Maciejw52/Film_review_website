@@ -114,14 +114,21 @@ export const getReviewByIdFromServer = (reviewId) => {
   )
 }
 
+/* 
+    
+    USER HTTP REQUESTS 
+
+*/
+
+
 
 export const postNewUser = (userObject) => {
   return (
     myApi.post("/users/new", userObject)
     .then(( dataFromServer ) => {
-      console.log(dataFromServer.data)
+      return dataFromServer
     }).catch((error) => {
-      console.log(error)
+      return error.response
     })
   )
 };
@@ -130,9 +137,9 @@ export const postAuthenticateUser = (userObject) => {
   return (
     myApi.post("/users", userObject)
     .then(( dataFromServer ) => {
-      console.log(dataFromServer.data)
+      return dataFromServer
     }).catch((error) => {
-      console.log(error)
+      return error.response
     })
   )
 };
