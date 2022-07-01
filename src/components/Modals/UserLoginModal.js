@@ -1,13 +1,13 @@
 import React from 'react'
 import { UserContext } from '../../UserContext';
-import { useContext, useState } from 'react';
-import { Button, Modal } from 'react-bootstrap';
+import { useContext } from 'react';
+import { Button, Modal, Form } from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function UserLogin({show, setShow}) {
   
-  const { user, userLogin } = useContext(UserContext);
+  const { userLogin } = useContext(UserContext);
 
 
   const handleSubmit = (event) => {
@@ -15,6 +15,7 @@ function UserLogin({show, setShow}) {
 
     let uname = document.forms.item(0)[0].value
     userLogin(uname);
+    setShow(false);
   
     const loginForm = document.querySelectorAll('#username, #password');
     loginForm.forEach(input => {
@@ -24,28 +25,28 @@ function UserLogin({show, setShow}) {
   };
 
   const handleClose = () => {
-    userLogin("Anon")
+    userLogin("Anon");
     setShow(false);
   };
 
   return (
     <>
       <div style={{textAlign: "center"}}>
-        <Modal show={show} onHide={handleClose}>
+        <Modal show={show} onHide={() => {setShow(false)}}>
           <Modal.Header closeButton>
             <Modal.Title>Please Login</Modal.Title>
           </Modal.Header>
-          <form onSubmit={handleSubmit} className='flex-container' style={{ flexDirection: "column" }}> 
+          <Form onSubmit={handleSubmit} className='flex-container' style={{ flexDirection: "column" }}> 
             <Modal.Body>
               <div className="form">
                 <div className="input-container">
-                  <label>Username </label>
-                  <input type="text" name="username" id="username" required />
+                  <Form.Label>Username </Form.Label>
+                  <Form.Control type="text" name="username" id="username" required />
                 </div>
                 <br/>
                 <div className="input-container">
-                  <label>Password </label>
-                  <input type="password" name="password" id="password" required />
+                  <Form.Label>Password </Form.Label>
+                  <Form.Control type="password" name="password" id="password" required />
                 </div>
               </div>
             </Modal.Body>
@@ -53,7 +54,7 @@ function UserLogin({show, setShow}) {
               <Button type="submit" className="btn btn-success LoginButton">Login</Button>
               <Button className="btn btn-danger LoginButton" onClick={handleClose}>Continue as Anon</Button>
             </Modal.Footer>
-          </form>
+          </Form>
 
         </Modal>
       </div>

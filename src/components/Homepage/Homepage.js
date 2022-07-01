@@ -1,13 +1,9 @@
 import React from 'react'
-import { useContext } from 'react'
-import { UserContext } from '../../UserContext';
-import UserLoginModal from '../UserLogin/UserLoginModal';
 import "./Homepage.css"
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Homepage() {
-  const { user } = useContext(UserContext);
 
   return (
     <>
