@@ -6,7 +6,7 @@ export const UserContext = createContext({ name: '', auth: false });
 
 export const UserProvider = ({ children }) => {
 
-  const [user, setUser] = useState({ name: '', auth: false });
+  const [user, setUser] = useState({ name: 'Anon', auth: false });
 
   const userLogin = (name) => {
     setUser((user) => ({
@@ -17,7 +17,7 @@ export const UserProvider = ({ children }) => {
 
   const userLogout = () => {
     setUser((user) => ({
-      name: '',
+      name: 'Anon',
       auth: false,
     }));
   };

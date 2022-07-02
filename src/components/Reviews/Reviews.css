@@ -74,13 +74,13 @@
 }
 
 .reviewDateCreated {
-  font-size: max(12px, 1em);
+  font-size: max(12px, 1vw);
   color: #818384;
   cursor: default;
 }
 
 .reviewCategory {
-  font-size: max(12px, 1em);
+  font-size: max(12px, 1.1vw);
   color: #818384;
 }
 

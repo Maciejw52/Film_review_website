@@ -3,8 +3,8 @@ import ConvertDate from "./ConvertDate";
 
 // URL for backend
 const myApi = axios.create({
-  //baseURL: "http://localhost:7000/api/"
-  baseURL:"https://review-website-server.herokuapp.com/api/"
+  baseURL: "http://localhost:7000/api/"
+  //baseURL:"https://review-website-server.herokuapp.com/api/"
 });
 
 /* 
@@ -26,10 +26,10 @@ export const postGenre = (NewGenre) => {
 
   return (
     myApi.post(`genres/new`, NewGenre )
-    .then(( dataFromServer) => {
-      console.log(dataFromServer.data)
+    .then(( dataFromServer ) => {
+      return dataFromServer
     }).catch((error) => {
-      console.log(error)
+      return error.response
     })
   )
 };
@@ -105,9 +105,7 @@ export const getReviewByIdFromServer = (reviewId) => {
   return (
     myApi.get(`/reviews/${reviewId}`)
       .then((reviewIdData) => {
-
-        reviewIdData.data.created_at = ConvertDate(reviewIdData.data.created_at);
-
+      reviewIdData.data.created_at = ConvertDate(reviewIdData.data.created_at);
       console.log(reviewIdData.data)
       return reviewIdData.data;
     })
@@ -119,8 +117,6 @@ export const getReviewByIdFromServer = (reviewId) => {
     USER HTTP REQUESTS 
 
 */
-
-
 
 export const postNewUser = (userObject) => {
   return (

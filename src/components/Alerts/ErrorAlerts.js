@@ -1,12 +1,12 @@
 import React from 'react';
 import { Alert } from "react-bootstrap";
 
-function ErrorAlerts({ errorCode }) {
+function ErrorAlerts({ errorCode, reason }) {
   
-  if (errorCode === 401) {
+  if (errorCode === 404) {
     return (
       <Alert variant="danger">
-        Username doesn't exist. Please try again.
+        {reason} doesn't exist. Please try again.
       </Alert>
     )
   }
@@ -14,10 +14,27 @@ function ErrorAlerts({ errorCode }) {
   if (errorCode === 409) {
     return (
       <Alert variant="danger">
-        Username already exist. Please try a different one.
+        {reason} already exists. Please try again.
       </Alert>
     )
   }
+
+  if (errorCode === 401) {
+    return (
+      <Alert variant="danger">
+        Incorrect password provided. Please try again.
+      </Alert>
+    )
+  }
+
+  if (errorCode === 418) {
+    return (
+      <Alert variant="danger">
+        Passwords don't match.
+      </Alert>
+    )
+  }
+
   return(false)
 }
 

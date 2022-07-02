@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState } from 'react';
 import { Button } from 'react-bootstrap'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -7,12 +8,23 @@ import UppercaseString from "../../utils/UppercaseString";
 import "./AddGenre.css";
 
 import { Form } from 'react-bootstrap';
+import ErrorAlerts from '../Alerts/ErrorAlerts';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function AddGenre() {
 
+  const [showAlert, setShowAlert] = useState(false);
+  const [errorCode, setErrorCode] = useState("");
+
   const HandleSendGenre = (NewGenre) => {
-    postGenre({genre: UppercaseString(NewGenre.toLowerCase())})
+    postGenre({ genre: UppercaseString(NewGenre.toLowerCase()) })
+      .then((response) => {
+
+      if (response.status !== 200 ) {
+        setErrorCode(response.status);
+        setShowAlert(true);
+      }
+      })
   }
 
   return (
@@ -31,6 +43,7 @@ function AddGenre() {
             <Form.Label><h2>Add Genre</h2></Form.Label>
               <Form.Control type="text" placeholder="Enter Genre Here" required />
             </Form.Group>
+            {showAlert ? <ErrorAlerts errorCode={errorCode} reason={"Genre"} /> : null }
             <div style={{ display: "flex", justifyContent: "space-around" }}>
               <Button type="reset" className="btn btn-primary btn-block" style={{width: "75.55px"}}>Clear</Button>
               <Button type="submit" className="btn btn-success btn-block">Submit</Button>

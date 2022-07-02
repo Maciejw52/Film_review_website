@@ -5,7 +5,6 @@ import { Button, Modal, Form } from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { postAuthenticateUser } from '../../utils/api';
-import bcrypt from 'bcryptjs'
 import ErrorAlerts from '../Alerts/ErrorAlerts';
 
 function UserLogin({ showLogin, setShowLogin }) {
@@ -22,16 +21,16 @@ function UserLogin({ showLogin, setShowLogin }) {
     // Prevents page reloading 
     event.preventDefault();
 
-    // Set username and hashed password to be sent to server
     const username = usernameInputRef.current.value
-    const hashedPass = bcrypt.hashSync(passwordInputRef.current.value);
 
     // Attempt to send the new username and password to server
     postAuthenticateUser({
-      username: username,
-      password: hashedPass
-    }).then((response) => {
+
+      username: usernameInputRef.current.value,
+      password: passwordInputRef.current.value
       
+    }).then((response) => {
+      console.log(response)
       // if 200, user is authorised
       if (response.status === 200 ) {
 
@@ -40,7 +39,8 @@ function UserLogin({ showLogin, setShowLogin }) {
         console.log(`Set username to ${username}`);
 
       } else {
-        setErrorCode(response.status);
+        console.log(response.status)
+        setErrorCode(response.status)        
         setShowAlert(true);
       }
     }).catch((error) => {
@@ -57,7 +57,7 @@ function UserLogin({ showLogin, setShowLogin }) {
 
 
   return (
-    <>
+    <section>
       <div style={{textAlign: "center"}}>
         <Modal show={showLogin} onHide={handleClose}>
           <Modal.Header closeButton>
@@ -75,7 +75,7 @@ function UserLogin({ showLogin, setShowLogin }) {
                 </div>
               </div>
             </Modal.Body>
-            {showAlert ? <ErrorAlerts errorCode={errorCode} /> : null }
+            {showAlert ? <ErrorAlerts errorCode={errorCode} reason={"Username"} /> : null }
             <Modal.Footer>
               <Button type="submit" className="btn btn-success LoginButton">Login</Button>
               <Button className="btn btn-danger LoginButton" onClick={handleClose}>Continue as Anon</Button>
@@ -84,7 +84,7 @@ function UserLogin({ showLogin, setShowLogin }) {
 
         </Modal>
       </div>
-    </>
+    </section>
 
   )
 }

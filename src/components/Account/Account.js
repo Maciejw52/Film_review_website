@@ -26,19 +26,24 @@ function Account() {
   return (
     <section>
       <div className='flex-container' style={{justifyContent: "space-between"}}>
-        <div className='flex-container' style={{flex: "60%", flexDirection: "column", justifyContent: "center", fontSize:"max(20px, 2vw)"}}>
+        <div className='flex-container LoginText'>
           <div>{ user.name !== "" ? `Current User is ${user.name}` : `Please Login or Create new Account`}</div>
         </div>
         <div>
           <div className='flex-container' style={{ display: "flex" }}>
-            <Button className="btn btn-success LoginButton" onClick={handleShowLogin}>Login</Button>
+            <Button
+              className="btn btn-success LoginButtonAccountPage"
+              onClick={handleShowLogin}
+            >Login</Button>
             <Button className="btn btn-danger LogoutButton" onClick={() => { userLogout() }}>Logout</Button>
           </div>
-          <Button
-            className="btn btn-primary CreateNewUserButton"
-            onClick={handleShowCreateNewUser}
-            style={{alignItems: "center"}}
-          >Create Account</Button>
+          <div className='flex-container' style={{justifyContent: "center"}} >
+            <Button
+              className="btn btn-primary CreateNewUserButton"
+              onClick={handleShowCreateNewUser}
+              
+              >Create Account</Button>
+          </div>
         </div>
       </div>
 

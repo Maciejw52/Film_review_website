@@ -1,7 +1,21 @@
+.LoginText {
+  flex: 60%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: max(20px, 2vw);
+}
+
+
 .LogoutButton {
   margin-left: 10px;
 }
 
 .CreateNewUserButton {
   margin-top: 10px;
+  width: 100%;
+}
+
+.LoginButtonAccountPage {
+  width: 75.7px;
 }

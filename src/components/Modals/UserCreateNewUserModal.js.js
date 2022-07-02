@@ -1,11 +1,10 @@
-import React from 'react'
+import React from 'react';
 import { UserContext } from '../../UserContext';
 import { useContext, useRef, useState } from 'react';
 import { Button, Modal, Form } from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { postNewUser } from '../../utils/api';
-import bcrypt from 'bcryptjs'
 import ErrorAlerts from "../Alerts/ErrorAlerts";
 
 function UserLogin({showCreateNewUser, setShowCreateNewUser}) {
@@ -18,28 +17,25 @@ function UserLogin({showCreateNewUser, setShowCreateNewUser}) {
   const passwordInputRef2 = useRef();
   const emailInputRef = useRef();
 
-
   const [showAlert, setShowAlert] = useState(false);
   const [errorCode, setErrorCode] = useState("");
-
 
   const handleLoginForm = (event) => {
     event.preventDefault();
 
-    const username = usernameInputRef.current.value;
-    const hashedPass = bcrypt.hashSync(passwordInputRef1.current.value);
-    const email = emailInputRef.current.value;
+    const newUser = {
+      username: usernameInputRef.current.value,
+      password: passwordInputRef1.current.value,
+      passwordCheck: passwordInputRef2.current.value,
+      email: emailInputRef.current.value
+    }
 
-    postNewUser({
-      username: username,
-      password: hashedPass,
-      email: email
-    }).then((response) => {
+    postNewUser(newUser).then((response) => {
 
       if (response.status === 200) {
         setShowCreateNewUser(false);
-        userLogin(username);
-        console.log(`user ${username} has been created.`);
+        userLogin(newUser.username);
+        console.log(`user ${newUser.username} has been created.`);
       } else {
         setErrorCode(response.status);
         setShowAlert(true);
@@ -47,7 +43,8 @@ function UserLogin({showCreateNewUser, setShowCreateNewUser}) {
 
     }).catch((error) => {
       console.log(error);
-    })
+    });
+
   };
 
   const handleClose = () => {
@@ -83,7 +80,7 @@ function UserLogin({showCreateNewUser, setShowCreateNewUser}) {
                 </div>
               </div>
             </Modal.Body>
-            {showAlert ? <ErrorAlerts errorCode={errorCode} /> : null }
+            {showAlert ? <ErrorAlerts errorCode={errorCode} reason={"Username"}  /> : null }
             <Modal.Footer>
               <Button type="submit" className="btn btn-primary LoginButton">Create Account</Button>
               <Button className="btn btn-danger LoginButton" onClick={handleClose}>Continue as Anon</Button>
