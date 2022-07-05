@@ -30,19 +30,17 @@ function Account() {
           <div>{ user.name !== "" ? `Current User is ${user.name}` : `Please Login or Create new Account`}</div>
         </div>
         <div>
-          <div className='flex-container' style={{ display: "flex" }}>
-            <Button
+          <div className='flex-container' style={{justifyContent: "center", display: "flex", flexDirection: "column"}} >
+
+            { user.name === "Anon" ? <Button
               className="btn btn-success LoginButtonAccountPage"
-              onClick={handleShowLogin}
-            >Login</Button>
-            <Button className="btn btn-danger LogoutButton" onClick={() => { userLogout() }}>Logout</Button>
-          </div>
-          <div className='flex-container' style={{justifyContent: "center"}} >
+              onClick={handleShowLogin}>Login</Button> : <Button
+                className="btn btn-danger LogoutButton"
+                onClick={() => { userLogout() }}>Logout</Button> }
+          
             <Button
               className="btn btn-primary CreateNewUserButton"
-              onClick={handleShowCreateNewUser}
-              
-              >Create Account</Button>
+              onClick={handleShowCreateNewUser}>Create Account</Button>
           </div>
         </div>
       </div>
