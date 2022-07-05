@@ -64,19 +64,19 @@ function UserLogin({showCreateNewUser, setShowCreateNewUser}) {
               <div className="form">
                 <div className="input-container">
                   <Form.Label>Username: </Form.Label>
-                  <Form.Control ref={usernameInputRef} type="text" name="username" id="username"required />
+                  <Form.Control ref={usernameInputRef} type="text" required />
                 </div>
                 <div className="input-container">
                   <Form.Label>Email: </Form.Label>
-                  <Form.Control ref={emailInputRef} type="email" name="email" id="email" required />
+                  <Form.Control ref={emailInputRef} type="email" required />
                 </div>
                 <div className="input-container">
                   <Form.Label>Password: </Form.Label>
-                  <Form.Control ref={passwordInputRef1} type="password" name="password" id="password" required />
+                  <Form.Control ref={passwordInputRef1} type="password" pattern=".{8,24}" equired title="8 to 24 characters" required />
                 </div>
                 <div className="input-container">
                   <Form.Label>Re-Type Password: </Form.Label>
-                  <Form.Control ref={passwordInputRef2} type="password" name="password" id="password" required />
+                  <Form.Control ref={passwordInputRef2} type="password" pattern=".{8,24}" equired title="8 to 24 characters" required />
                 </div>
               </div>
             </Modal.Body>
